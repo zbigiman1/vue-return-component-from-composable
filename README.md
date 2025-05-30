@@ -29,3 +29,4 @@ npm run build
 ```
 # vue-return-component-from-composable
 # vue-return-component-from-composable
+# vue-return-component-from-composable
