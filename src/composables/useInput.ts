@@ -1,9 +1,21 @@
 import { h } from 'vue'
+import InputComponent from '@/components/InputComponent.vue'
+import { FormField } from '@/types/types'
+import { validate } from './useValidation'
 
-export interface FormField {
-    type: string
-}
+
 
 export function useInput(props: FormField) {
-    return h('input', { type: props.type, })
+    function onUpdate(value) {
+        props.formData.value[props.name] = value
+        validate(props)
+    }
+    return h(InputComponent, {
+        name: props.name,
+        label: props.label,
+        type: props.type,
+        errors: props.errors,
+        modelValue: props.modelValue,
+        'onUpdate:modelValue': onUpdate
+    })
 }
